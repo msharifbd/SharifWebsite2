@@ -9,7 +9,7 @@ pygmentsCodeFences: yes
 pygmentsCodeFencesGuessSyntax: yes
 enableEmoji: yes
 params:
-  author: Sharif Islam
+  author: Sharif Islam, DBA, CPA, CMA
   avatarURL: images/sharif.jpg
   colorScheme: auto
   commit: https://github.com/msharifbd/SharifWebsite2
@@ -39,7 +39,7 @@ params:
       weight: 2
     - icon: fa fa-2x fa-linkedin
       name: LinkedIn
-      url: "https://www.linkedin.com/in/md-shariful-islam-cpa-cma-09345730/"
+      url: "https://www.linkedin.com/in/sharif-islam-dba-cpa-cma-09345730/"
       weight: 3
 
 taxonomies:
@@ -67,3 +67,7 @@ languages:
         - name: CONTACT
           url: contact/
           weight: 5
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
