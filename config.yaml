@@ -1,5 +1,5 @@
 baseURL: http://www.example.com
-title: johndoe
+title: Sharif Islam
 theme: hugo-coder
 languageCode: en
 defaultContentLanguage: en
@@ -9,51 +9,39 @@ pygmentsCodeFences: yes
 pygmentsCodeFencesGuessSyntax: yes
 enableEmoji: yes
 params:
-  author: John Doe
-  avatarURL: images/avatar.jpg
+  author: Sharif Islam
+  avatarURL: images/sharif.jpg
   colorScheme: auto
-  commit: https://github.com/luizdepra/hugo-coder/tree/
+  commit: https://github.com/msharifbd/SharifWebsite2
   customCSS: []
   customJS: []
   customRemoteJS: []
   customSCSS: []
   dateFormat: January 2, 2006
-  description: John Doe's personal website
+  description: Sharif Islam's personal website
   hideColorSchemeToggle: no
   info:
-    - Full Stack DevOps
-    - Magician
-  keywords: blog,developer,personal
+    - Assistant Professor
+    - School of Accoutancy
+    - Southern Illinois University Carbondale
+  keywords: Researcher, Machine Learning Enthusiast
   maxSeeAlsoItems: 5
   rtl: no
   since: 2019
   social:
     - icon: fa fa-2x fa-github
       name: Github
-      url: https://github.com/johndoe/
+      url: "https://github.com/msharifbd"
       weight: 1
-    - icon: fa fa-2x fa-gitlab
-      name: Gitlab
-      url: https://gitlab.com/johndoe/
-      weight: 2
     - icon: fa fa-2x fa-twitter
       name: Twitter
-      url: https://twitter.com/johndoe/
-      weight: 3
+      url: "https://twitter.com/MSharifIslam2"
+      weight: 2
     - icon: fa fa-2x fa-linkedin
       name: LinkedIn
-      url: https://www.linkedin.com/in/johndoe/
-      weight: 4
-    - icon: fa fa-2x fa-medium
-      name: Medium
-      url: https://medium.com/@johndoe
-      weight: 5
-    - icon: fa fa-2x fa-rss
-      name: RSS
-      rel: alternate
-      type: application/rss+xml
-      url: https://myhugosite.com/index.xml
-      weight: 6
+      url: "https://www.linkedin.com/in/md-shariful-islam-cpa-cma-09345730/"
+      weight: 3
+
 taxonomies:
   author: authors
   category: categories
@@ -64,37 +52,18 @@ languages:
     languageName: ':uk:'
     menu:
       main:
-        - name: About
+        - name: ABOUT
           url: about/
           weight: 1
-        - name: Blog
+        - name: BLOG
           url: posts/
           weight: 2
-        - name: Projects
+        - name: PROJECTS
           url: projects/
           weight: 3
-        - name: Contact me
+        - name: RESUME
+          url: "CV/Sharif_Resume_R.pdf"
+          weight: 4
+        - name: CONTACT
           url: contact/
           weight: 5
-  pt-br:
-    languageName: ':brazil:'
-    menu:
-      main:
-        - name: Sobre
-          url: about/
-          weight: 1
-        - name: Blog
-          url: posts/
-          weight: 2
-        - name: Projetos
-          url: projects/
-          weight: 3
-        - name: Contato
-          url: contact/
-          weight: 5
-    params:
-      author: João Ninguém
-      description: Sítio pessoal de João Ninguém
-      info: Full Stack DevOps e Mágico
-      keywords: blog,desenvolvedor,pessoal
-    title: João Ninguém
