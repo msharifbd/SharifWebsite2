@@ -1,0 +1,347 @@
+---
+title: "Data Analysis Using Tidyverse"
+output: html_document
+date: "2023-03-03"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Loading Necessary Packages
+
+```{r}
+library(tidyverse)
+library(janitor)
+library(lubridate)
+```
+
+
+# Data Set for Classroom Practice 
+
+```{r}
+# Loading Data 
+
+product <- read_csv(
+  "https://s3.us-west-2.amazonaws.com/public.gamelab.fun/dataset/Al-Bundy_raw-data.csv"
+)
+```
+
+# Clean the Data Set
+
+```{r}
+# To clean the names of the variables
+product <- product %>%
+  janitor::clean_names() %>% # this function cleans the names of the variables
+  dplyr::rename_all(toupper) # All variable names in upper case
+```
+
+# Meta Data 
+
+Once you load a data set in R, your next job should be to learn about some characteristics about the data. 
+
+```{r}
+glimpse(product)
+
+```
+
+It can be seen that there are 14,967 Rows (also called observations) and 14 columns (also called variables). The name of the first variable is `INVOICE_ID`, which type is `chr`, which means it is character type. 
+
+# Changing the Types of Variables 
+
+Sometimes we might need to change the type of the variable; e.g., converting an integer variable to a character variable. In such case, we need to write code.
+
+```{r}
+# Changing the types of Variables 
+product <- product %>% 
+  mutate(
+    DATE = mdy(DATE),
+    PRODUCT_ID = as.character(PRODUCT_ID),
+    SIZE_US = as.character(SIZE_US),
+    MONTH = as.character(MONTH),
+    INVOICE_NO = as.character(INVOICE_NO)
+  )
+glimpse(product)
+```
+
+# Create a New Data Set with Some Variables 
+
+
+## 1st (First) verb - `select ()`
+
+The `select ()` function is used to select some **columns** from your data set. For example, if you want to select all variables except `SIZE_EUROPE` and `SIZE_UK` from your data set. Then you should write the following code (We created a new data set called product2)
+
+```{r}
+product2 <- product %>% 
+  select(
+   -SIZE_EUROPE, - SIZE_UK  
+  )  # 1st Verb
+glimpse(product2)
+```
+
+# `count ()` Function to deal with categorical variables
+
+To know the frequency of different **categorical** variables, we can use the ``count()` function. For example - we want to know whether the dataset includes information about United States; we should write - 
+
+```{r}
+# Number of Countries 
+product %>% 
+  count(COUNTRY) 
+
+# Number of Years 
+product %>% 
+  count(YEAR)
+
+# Number of Invoices 
+product %>% 
+  count(INVOICE_NO)
+```
+
+**QUESTIONS** - 1. How many products are available in the dataset?
+            2. How many shoe sizes are available in the dataset (use `SIZE_US` variable)
+            
+# Create a new data set that satisfies some rows conditions 
+
+## 2nd (Second) verb - `filter ()`
+If we want to subset our dataset by rows, then `filter ()` is used. For example - we want to create a data set that will include only observations for United States, then we should write the following code. The name of the dataset is given `US`.  
+
+```{r}
+US <- product %>% 
+  filter(
+    COUNTRY == "United States"
+  )   # 2nd Verb
+
+glimpse(US)
+
+
+Germany <- product %>% 
+  filter(
+    COUNTRY == "Germany" & YEAR %in% c ('2014', '2015')
+  ) 
+glimpse(Germany)
+
+count (Germany, YEAR)
+```
+
+**QUESTIONS** - 1. Filter those observations that belong to United States and Germany and that are related to Male Gender. 
+
+# Average Price of Shoes 
+
+## 3rd (Third) verb - `summarize ()` 
+
+The `summarize ()` function is used to calculate different statistics such as mean, median, standard deviation, maximum, and minimum value. For example, we want to calculate the average price of all products - 
+
+```{r}
+product %>% 
+  summarize(AVG_PRICE = mean(SALE_PRICE)) # 3rd Verb
+```
+
+
+## 4th (Fourth) verb - `group_by ()` 
+
+The `group_by ()` function is very useful when it is used with `summarize ()` function. For example, we want to know the average price for each country; then, we should write the following code - 
+
+## 5th (Fifth) verb - `arrange ()`
+
+The `arrange ()`function allows you to reorder your data set by one or more variables.
+For example, if you want to reorder the average price in difference countries, you need to execute the following code - 
+
+```{r}
+product %>% 
+  group_by(COUNTRY) %>% # 4th Verb 
+  summarise(AVG_PRICE = mean(SALE_PRICE)) %>% 
+  arrange(AVG_PRICE) # 5th Verb
+```
+**QUESTIONS** - 1. Calculate the average price for both Gender. Who pays greater price?
+2. Calculate the average discount for both Gender. Who gets higher discount?
+3. Calculate the average discount for each month. In which month highest discount is provided?
+
+# Reshaping the Data 
+
+Sometimes we need to reshape our data for different purposes. This is like `pivot table` in excel. There are two important functions from `tidyr` that can be used to reshaped data. The first one is - `pivot_wider` function and the second one is `pivot_longer` function. `pivot_wider` widens a *LONG* data whereas `pivot_longer` lengthens a *WIDE* data.  
+
+
+## Identify Total Sales by Gender of Each Product (PRODUCT_ID) 
+
+### 6th (Sixth) verb - `mutate ()`
+
+The function `mutate ()` is used to create new variables (columns). For example, we want to know the `TOTAL_SALE`, which is the sum of the sum of sale by gender; then, we should write the following code - 
+
+```{r}
+product %>%
+  count(PRODUCT_ID, GENDER) %>%
+  arrange(-n) %>% 
+  pivot_wider(
+    names_from = GENDER,
+    values_from = n
+  ) %>% 
+  rename_all(toupper) %>% 
+  rename_at(vars(c("MALE","FEMALE")), ~paste0(.x,"_SALE")) %>% 
+  mutate(
+    TOTAL_SALE = MALE_SALE + FEMALE_SALE
+  ) %>% # 6th Verb
+  arrange(-TOTAL_SALE)
+```
+
+**QUESTIONS** - 1. Identify Total Sales by Gender of Each Shoe Size (SIZE_US) 
+
+# Bar Chart 
+
+##  Create a Bar Chart of Sale of Shoes by Gender of Different Sizes
+```{r}
+product %>%
+  count(SIZE_US, GENDER) %>%
+  pivot_wider(
+    names_from = "GENDER",
+    values_from = "n"
+  ) %>%
+  rename_all(toupper) %>%
+  replace(is.na(.),0) %>%
+  mutate(
+    TOTAL_SALES = FEMALE + MALE
+  ) %>%
+  pivot_longer(
+    cols = c("FEMALE", "MALE"),
+    names_to = "GENDER",
+    values_to = "GENDERSALES"
+  )%>%
+  ggplot(aes(x=reorder(SIZE_US,as.numeric(SIZE_US)), y= GENDERSALES, fill = GENDER))+
+  geom_bar(stat = "identity")+
+  labs(x = "SHOE SIZE",
+       y = "TOTAL SALES",
+       title = "SALES OF DIFFERENT SIZES OF SHOE")+
+  geom_text(aes(label = GENDERSALES),
+            position = position_stack(vjust = 0.5),
+            color = "black",
+            size = 2
+  )+
+  theme(legend.title = element_blank())
+```
+
+## Create a Bar Chart of Sale of Shoes by Gender of Different Sizes in different countries
+
+```{r}
+product %>%
+  count(SIZE_US, GENDER, COUNTRY) %>%
+  ggplot(aes(x=reorder(SIZE_US,as.numeric(SIZE_US)), y= n, fill = GENDER))+
+  geom_bar(stat = "identity")+
+  labs(x = "SHOE SIZE",
+       y = "TOTAL SALES",
+       title = "SALES OF DIFFERENT SIZES OF SHOE BY GENDER IN DIFFERENT COUNTRIES"
+  )+
+  geom_text(
+    aes(label = n),
+    position = position_stack(vjust = 0.5),
+    color = "black",
+    size = 2
+  )+
+  facet_wrap(~ COUNTRY, nrow = 2, ncol = 2
+  )+
+  theme(legend.position="top",
+        legend.title = element_blank())+
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+```
+
+## Create a Bar Chart for Product ID (PRODUCT_ID) 2190 Sales by shoes sizes
+
+```{r}
+product %>% 
+  filter(
+    PRODUCT_ID == "2190"
+  ) %>% 
+  count(SIZE_US) %>% 
+  mutate(SIZE_US = (str_c ("SIZE_", SIZE_US))) %>% 
+  ggplot(aes(x = reorder(SIZE_US,n), y = n))+
+  geom_bar(stat="identity", color = "blue", fill = "orange")+
+  coord_flip()+
+  geom_text(aes(label = n), stat = "identity", hjust = -0.2)+ # Here also try to use vjust and take out coord_flip()
+  xlab("SHOE SIZE")+
+  ylab("SALES (UNIT)")+
+  ggtitle("DISTRIBUTION of SALES for PRODUCT ID 2190")
+```
+
+**QUESTIONS** - 1. Create a Bar Chart for Product ID (PRODUCT_ID) 2190 Sales by Gender of Different Shoes Sizes 
+
+# Relationship between Shoe Size and Price 
+
+```{r}
+product %>%
+  ggplot(
+    aes(x = as.numeric(SIZE_US), y = UNIT_PRICE)
+  )+
+  geom_smooth(se = FALSE)+
+  xlab("SHOE SIZE (US)")+
+  ylab("PRICE")
+
+product %>%
+  ggplot(
+    aes(x = as.numeric(SIZE_US), y = UNIT_PRICE, color = COUNTRY)
+  )+
+  geom_smooth(se = FALSE)+
+  xlab("SHOE SIZE (US)")+
+  ylab("PRICE")+
+  theme(legend.title = element_blank())
+
+product %>%
+  ggplot(
+    aes(x = as.numeric(SIZE_US), y = UNIT_PRICE)
+  )+
+  geom_smooth(se = FALSE, color = "red")+
+  xlab("SHOE SIZE (US)")+
+  ylab("PRICE")+
+  facet_wrap(~COUNTRY)
+
+product %>%
+  ggplot(
+    aes(x = as.numeric(SIZE_US), y = UNIT_PRICE)
+  )+
+  geom_smooth(se = FALSE)+
+  xlab("SHOE SIZE (US)")+
+  ylab("PRICE")+
+  facet_wrap(~GENDER)
+
+product %>%
+  ggplot(
+    aes(x = as.numeric(SIZE_US), y = UNIT_PRICE, color = GENDER)
+  )+
+  geom_smooth(se = FALSE)+
+  xlab("SHOE SIZE (US)")+
+  ylab("PRICE")+
+  theme(legend.title = element_blank())
+```
+
+## Relationship between Shoe Size and Price in Different Gender and in Different Countries
+
+```{r}
+product %>%
+  ggplot(
+    aes(x = as.numeric(SIZE_US), y = UNIT_PRICE, color = GENDER)
+  )+
+  geom_smooth(se = FALSE)+
+  xlab("SHOE SIZE (US)")+
+  ylab("PRICE")+
+  facet_wrap(~COUNTRY)+
+  theme(legend.title = element_blank())
+```
+
+**QUESTIONS** - 1. Do the Above Analyses for the Relationship between Shoe Size and Discount
+
+# Relationship between Sales and Month
+
+```{r}
+product %>%
+  count(MONTH) %>%
+  ggplot(aes(x = reorder(MONTH,as.numeric(MONTH) ), y = n))+
+  geom_point(color = "red")+
+  labs(x = "MONTH",
+       y = "TOTAL SALES", title = "SALES IN DIFFERENT MONTHS")
+```
+
+**QUESTIONS** - 1. Visualize the Relationship between Sales and Month in different countries
+
+# Conclusion
+Data science is the number 1 most promising job in the US in recent years[^2]. Many disciplines around the world are incorporating the knowledge of data science in their day to operations. The skills employers most frequently seek in data sciene job posting are Python, R, ans SQL. It is hoped that the preliminary discussion in this project will help you to get some idea about data science. 
+
+
+[^1]: https://www.economist.com/leaders/2017/05/06/the-worlds-most-valuable-resource-is-no-longer-oil-but-data
+[^2]:https://www.techrepublic.com/article/why-data-scientist-is-the-most-promising-job-of-2019/
