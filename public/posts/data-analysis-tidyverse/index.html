@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>
+  Data Analysis Using Tidyverse · Sharif Islam
+</title>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="Sharif Islam, DBA, CPA, CMA">
+<meta name="description" content="Loading Necessary Packages Link to heading library(tidyverse) ## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ── ## ✔ ggplot2 3.4.0 ✔ purrr 1.0.1 ## ✔ tibble 3.1.8 ✔ dplyr 1.0.10 ## ✔ tidyr 1.3.0 ✔ stringr 1.5.0 ## ✔ readr 2.1.3 ✔ forcats 0.5.2 ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ── ## ✖ dplyr::filter() masks stats::filter() ## ✖ dplyr::lag() masks stats::lag() library(janitor) ## ## Attaching package: &#39;janitor&#39; ## ## The following objects are masked from &#39;package:stats&#39;: ## ## chisq.">
+<meta name="keywords" content="Researcher, Machine Learning Enthusiast">
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Data Analysis Using Tidyverse"/>
+<meta name="twitter:description" content="Loading Necessary Packages Link to heading library(tidyverse) ## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ── ## ✔ ggplot2 3.4.0 ✔ purrr 1.0.1 ## ✔ tibble 3.1.8 ✔ dplyr 1.0.10 ## ✔ tidyr 1.3.0 ✔ stringr 1.5.0 ## ✔ readr 2.1.3 ✔ forcats 0.5.2 ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ── ## ✖ dplyr::filter() masks stats::filter() ## ✖ dplyr::lag() masks stats::lag() library(janitor) ## ## Attaching package: &#39;janitor&#39; ## ## The following objects are masked from &#39;package:stats&#39;: ## ## chisq."/>
+
+<meta property="og:title" content="Data Analysis Using Tidyverse" />
+<meta property="og:description" content="Loading Necessary Packages Link to heading library(tidyverse) ## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ── ## ✔ ggplot2 3.4.0 ✔ purrr 1.0.1 ## ✔ tibble 3.1.8 ✔ dplyr 1.0.10 ## ✔ tidyr 1.3.0 ✔ stringr 1.5.0 ## ✔ readr 2.1.3 ✔ forcats 0.5.2 ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ── ## ✖ dplyr::filter() masks stats::filter() ## ✖ dplyr::lag() masks stats::lag() library(janitor) ## ## Attaching package: &#39;janitor&#39; ## ## The following objects are masked from &#39;package:stats&#39;: ## ## chisq." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://www.example.com/posts/data-analysis-tidyverse/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-03-03T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-03-03T00:00:00+00:00" />
+
+
+
+
+
+<link rel="canonical" href="http://www.example.com/posts/data-analysis-tidyverse/">
+
+
+<link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.min.01bd429dda63a16d76996eaf0b8da061429b76e714515cb1b246aac7fe7f4b2a.css" integrity="sha256-Ab1CndpjoW12mW6vC42gYUKbducUUVyxskaqx/5/Syo=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.593028e7f7ac55c003b79c230d1cd411bb4ca53b31556c3abb7f027170e646e9.css" integrity="sha256-WTAo5/esVcADt5wjDRzUEbtMpTsxVWw6u38CcXDmRuk=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<meta name="generator" content="Hugo 0.110.0">
+
+
+
+
+
+  </head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      Sharif Islam
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">ABOUT</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">BLOG</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/projects/">PROJECTS</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/CV/Sharif_Resume_R.pdf">RESUME</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/contact/">CONTACT</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="http://www.example.com/posts/data-analysis-tidyverse/">
+              Data Analysis Using Tidyverse
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime="2023-03-03T00:00:00Z">
+                March 3, 2023
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              14-minute read
+            </span>
+          </div>
+          
+          
+          
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <h1 id="loading-necessary-packages">
+  Loading Necessary Packages
+  <a class="heading-link" href="#loading-necessary-packages">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>library(tidyverse)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
+</span></span><span style="display:flex;"><span>## ✔ ggplot2 3.4.0      ✔ purrr   1.0.1 
+</span></span><span style="display:flex;"><span>## ✔ tibble  3.1.8      ✔ dplyr   1.0.10
+</span></span><span style="display:flex;"><span>## ✔ tidyr   1.3.0      ✔ stringr 1.5.0 
+</span></span><span style="display:flex;"><span>## ✔ readr   2.1.3      ✔ forcats 0.5.2 
+</span></span><span style="display:flex;"><span>## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+</span></span><span style="display:flex;"><span>## ✖ dplyr::filter() masks stats::filter()
+</span></span><span style="display:flex;"><span>## ✖ dplyr::lag()    masks stats::lag()
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>library(janitor)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>## 
+</span></span><span style="display:flex;"><span>## Attaching package: &#39;janitor&#39;
+</span></span><span style="display:flex;"><span>## 
+</span></span><span style="display:flex;"><span>## The following objects are masked from &#39;package:stats&#39;:
+</span></span><span style="display:flex;"><span>## 
+</span></span><span style="display:flex;"><span>##     chisq.test, fisher.test
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>library(lubridate)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>## Loading required package: timechange
+</span></span><span style="display:flex;"><span>## 
+</span></span><span style="display:flex;"><span>## Attaching package: &#39;lubridate&#39;
+</span></span><span style="display:flex;"><span>## 
+</span></span><span style="display:flex;"><span>## The following objects are masked from &#39;package:base&#39;:
+</span></span><span style="display:flex;"><span>## 
+</span></span><span style="display:flex;"><span>##     date, intersect, setdiff, union
+</span></span></code></pre></div><h1 id="data-set-for-classroom-practice">
+  Data Set for Classroom Practice
+  <a class="heading-link" href="#data-set-for-classroom-practice">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="font-style:italic"># Loading Data </span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>product &lt;- read_csv(
+</span></span><span style="display:flex;"><span>  <span style="font-style:italic">&#34;https://s3.us-west-2.amazonaws.com/public.gamelab.fun/dataset/Al-Bundy_raw-data.csv&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>## Rows: 14967 Columns: 14
+</span></span><span style="display:flex;"><span>## ── Column specification ────────────────────────────────────────────────────────
+</span></span><span style="display:flex;"><span>## Delimiter: &#34;,&#34;
+</span></span><span style="display:flex;"><span>## chr (5): Date, Country, Shop, Gender, Size (Europe)
+</span></span><span style="display:flex;"><span>## dbl (9): InvoiceNo, ProductID, Size (US), Size (UK), UnitPrice, Discount, Ye...
+</span></span><span style="display:flex;"><span>## 
+</span></span><span style="display:flex;"><span>## ℹ Use `spec()` to retrieve the full column specification for this data.
+</span></span><span style="display:flex;"><span>## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+</span></span></code></pre></div><h1 id="clean-the-data-set">
+  Clean the Data Set
+  <a class="heading-link" href="#clean-the-data-set">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="font-style:italic"># To clean the names of the variables</span>
+</span></span><span style="display:flex;"><span>product &lt;- product %&gt;%
+</span></span><span style="display:flex;"><span>  janitor::clean_names() %&gt;% <span style="font-style:italic"># this function cleans the names of the variables</span>
+</span></span><span style="display:flex;"><span>  dplyr::rename_all(toupper) <span style="font-style:italic"># All variable names in upper case</span>
+</span></span></code></pre></div><h1 id="meta-data">
+  Meta Data
+  <a class="heading-link" href="#meta-data">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<p>Once you load a data set in R, your next job should be to learn about some characteristics about the data.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>glimpse(product)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>## Rows: 14,967
+</span></span><span style="display:flex;"><span>## Columns: 14
+</span></span><span style="display:flex;"><span>## $ INVOICE_NO  &lt;dbl&gt; 52389, 52390, 52391, 52392, 52393, 52394, 52395, 52396, 52…
+</span></span><span style="display:flex;"><span>## $ DATE        &lt;chr&gt; &#34;1/1/2014&#34;, &#34;1/1/2014&#34;, &#34;1/1/2014&#34;, &#34;1/1/2014&#34;, &#34;1/1/2014&#34;…
+</span></span><span style="display:flex;"><span>## $ COUNTRY     &lt;chr&gt; &#34;United Kingdom&#34;, &#34;United States&#34;, &#34;Canada&#34;, &#34;United State…
+</span></span><span style="display:flex;"><span>## $ PRODUCT_ID  &lt;dbl&gt; 2152, 2230, 2160, 2234, 2222, 2173, 2200, 2238, 2191, 2237…
+</span></span><span style="display:flex;"><span>## $ SHOP        &lt;chr&gt; &#34;UK2&#34;, &#34;US15&#34;, &#34;CAN7&#34;, &#34;US6&#34;, &#34;UK4&#34;, &#34;US15&#34;, &#34;GER2&#34;, &#34;CAN5…
+</span></span><span style="display:flex;"><span>## $ GENDER      &lt;chr&gt; &#34;Male&#34;, &#34;Male&#34;, &#34;Male&#34;, &#34;Female&#34;, &#34;Female&#34;, &#34;Male&#34;, &#34;Femal…
+</span></span><span style="display:flex;"><span>## $ SIZE_US     &lt;dbl&gt; 11.0, 11.5, 9.5, 9.5, 9.0, 10.5, 9.0, 10.0, 10.5, 9.0, 10.…
+</span></span><span style="display:flex;"><span>## $ SIZE_EUROPE &lt;chr&gt; &#34;44&#34;, &#34;44-45&#34;, &#34;42-43&#34;, &#34;40&#34;, &#34;39-40&#34;, &#34;43-44&#34;, &#34;39-40&#34;, &#34;…
+</span></span><span style="display:flex;"><span>## $ SIZE_UK     &lt;dbl&gt; 10.5, 11.0, 9.0, 7.5, 7.0, 10.0, 7.0, 9.5, 10.0, 7.0, 9.5,…
+</span></span><span style="display:flex;"><span>## $ UNIT_PRICE  &lt;dbl&gt; 159, 199, 149, 159, 159, 159, 179, 169, 139, 149, 129, 169…
+</span></span><span style="display:flex;"><span>## $ DISCOUNT    &lt;dbl&gt; 0.0, 0.2, 0.2, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1…
+</span></span><span style="display:flex;"><span>## $ YEAR        &lt;dbl&gt; 2014, 2014, 2014, 2014, 2014, 2014, 2014, 2014, 2014, 2014…
+</span></span><span style="display:flex;"><span>## $ MONTH       &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…
+</span></span><span style="display:flex;"><span>## $ SALE_PRICE  &lt;dbl&gt; 159.0, 159.2, 119.2, 159.0, 159.0, 159.0, 179.0, 169.0, 13…
+</span></span></code></pre></div><p>It can be seen that there are 14,967 Rows (also called observations) and 14 columns (also called variables). The name of the first variable is <code>INVOICE_ID</code>, which type is <code>chr</code>, which means it is character type.</p>
+<h1 id="changing-the-types-of-variables">
+  Changing the Types of Variables
+  <a class="heading-link" href="#changing-the-types-of-variables">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<p>Sometimes we might need to change the type of the variable; e.g., converting an integer variable to a character variable. In such case, we need to write code.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="font-style:italic"># Changing the types of Variables </span>
+</span></span><span style="display:flex;"><span>product &lt;- product %&gt;% 
+</span></span><span style="display:flex;"><span>  mutate(
+</span></span><span style="display:flex;"><span>    DATE = mdy(DATE),
+</span></span><span style="display:flex;"><span>    PRODUCT_ID = as.character(PRODUCT_ID),
+</span></span><span style="display:flex;"><span>    SIZE_US = as.character(SIZE_US),
+</span></span><span style="display:flex;"><span>    MONTH = as.character(MONTH),
+</span></span><span style="display:flex;"><span>    INVOICE_NO = as.character(INVOICE_NO)
+</span></span><span style="display:flex;"><span>  )
+</span></span><span style="display:flex;"><span>glimpse(product)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>## Rows: 14,967
+</span></span><span style="display:flex;"><span>## Columns: 14
+</span></span><span style="display:flex;"><span>## $ INVOICE_NO  &lt;chr&gt; &#34;52389&#34;, &#34;52390&#34;, &#34;52391&#34;, &#34;52392&#34;, &#34;52393&#34;, &#34;52394&#34;, &#34;523…
+</span></span><span style="display:flex;"><span>## $ DATE        &lt;date&gt; 2014-01-01, 2014-01-01, 2014-01-01, 2014-01-01, 2014-01-0…
+</span></span><span style="display:flex;"><span>## $ COUNTRY     &lt;chr&gt; &#34;United Kingdom&#34;, &#34;United States&#34;, &#34;Canada&#34;, &#34;United State…
+</span></span><span style="display:flex;"><span>## $ PRODUCT_ID  &lt;chr&gt; &#34;2152&#34;, &#34;2230&#34;, &#34;2160&#34;, &#34;2234&#34;, &#34;2222&#34;, &#34;2173&#34;, &#34;2200&#34;, &#34;2…
+</span></span><span style="display:flex;"><span>## $ SHOP        &lt;chr&gt; &#34;UK2&#34;, &#34;US15&#34;, &#34;CAN7&#34;, &#34;US6&#34;, &#34;UK4&#34;, &#34;US15&#34;, &#34;GER2&#34;, &#34;CAN5…
+</span></span><span style="display:flex;"><span>## $ GENDER      &lt;chr&gt; &#34;Male&#34;, &#34;Male&#34;, &#34;Male&#34;, &#34;Female&#34;, &#34;Female&#34;, &#34;Male&#34;, &#34;Femal…
+</span></span><span style="display:flex;"><span>## $ SIZE_US     &lt;chr&gt; &#34;11&#34;, &#34;11.5&#34;, &#34;9.5&#34;, &#34;9.5&#34;, &#34;9&#34;, &#34;10.5&#34;, &#34;9&#34;, &#34;10&#34;, &#34;10.5&#34;…
+</span></span><span style="display:flex;"><span>## $ SIZE_EUROPE &lt;chr&gt; &#34;44&#34;, &#34;44-45&#34;, &#34;42-43&#34;, &#34;40&#34;, &#34;39-40&#34;, &#34;43-44&#34;, &#34;39-40&#34;, &#34;…
+</span></span><span style="display:flex;"><span>## $ SIZE_UK     &lt;dbl&gt; 10.5, 11.0, 9.0, 7.5, 7.0, 10.0, 7.0, 9.5, 10.0, 7.0, 9.5,…
+</span></span><span style="display:flex;"><span>## $ UNIT_PRICE  &lt;dbl&gt; 159, 199, 149, 159, 159, 159, 179, 169, 139, 149, 129, 169…
+</span></span><span style="display:flex;"><span>## $ DISCOUNT    &lt;dbl&gt; 0.0, 0.2, 0.2, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1…
+</span></span><span style="display:flex;"><span>## $ YEAR        &lt;dbl&gt; 2014, 2014, 2014, 2014, 2014, 2014, 2014, 2014, 2014, 2014…
+</span></span><span style="display:flex;"><span>## $ MONTH       &lt;chr&gt; &#34;1&#34;, &#34;1&#34;, &#34;1&#34;, &#34;1&#34;, &#34;1&#34;, &#34;1&#34;, &#34;1&#34;, &#34;1&#34;, &#34;1&#34;, &#34;1&#34;, &#34;1&#34;, &#34;1&#34;…
+</span></span><span style="display:flex;"><span>## $ SALE_PRICE  &lt;dbl&gt; 159.0, 159.2, 119.2, 159.0, 159.0, 159.0, 179.0, 169.0, 13…
+</span></span></code></pre></div><h1 id="create-a-new-data-set-with-some-variables">
+  Create a New Data Set with Some Variables
+  <a class="heading-link" href="#create-a-new-data-set-with-some-variables">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<h2 id="1st-first-verb---select-">
+  1st (First) verb - <code>select ()</code>
+  <a class="heading-link" href="#1st-first-verb---select-">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>The <code>select ()</code> function is used to select some <strong>columns</strong> from your data set. For example, if you want to select all variables except <code>SIZE_EUROPE</code> and <code>SIZE_UK</code> from your data set. Then you should write the following code (We created a new data set called product2)</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>product2 &lt;- product %&gt;% 
+</span></span><span style="display:flex;"><span>  select(
+</span></span><span style="display:flex;"><span>   -SIZE_EUROPE, - SIZE_UK  
+</span></span><span style="display:flex;"><span>  )  <span style="font-style:italic"># 1st Verb</span>
+</span></span><span style="display:flex;"><span>glimpse(product2)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>## Rows: 14,967
+</span></span><span style="display:flex;"><span>## Columns: 12
+</span></span><span style="display:flex;"><span>## $ INVOICE_NO &lt;chr&gt; &#34;52389&#34;, &#34;52390&#34;, &#34;52391&#34;, &#34;52392&#34;, &#34;52393&#34;, &#34;52394&#34;, &#34;5239…
+</span></span><span style="display:flex;"><span>## $ DATE       &lt;date&gt; 2014-01-01, 2014-01-01, 2014-01-01, 2014-01-01, 2014-01-01…
+</span></span><span style="display:flex;"><span>## $ COUNTRY    &lt;chr&gt; &#34;United Kingdom&#34;, &#34;United States&#34;, &#34;Canada&#34;, &#34;United States…
+</span></span><span style="display:flex;"><span>## $ PRODUCT_ID &lt;chr&gt; &#34;2152&#34;, &#34;2230&#34;, &#34;2160&#34;, &#34;2234&#34;, &#34;2222&#34;, &#34;2173&#34;, &#34;2200&#34;, &#34;22…
+</span></span><span style="display:flex;"><span>## $ SHOP       &lt;chr&gt; &#34;UK2&#34;, &#34;US15&#34;, &#34;CAN7&#34;, &#34;US6&#34;, &#34;UK4&#34;, &#34;US15&#34;, &#34;GER2&#34;, &#34;CAN5&#34;…
+</span></span><span style="display:flex;"><span>## $ GENDER     &lt;chr&gt; &#34;Male&#34;, &#34;Male&#34;, &#34;Male&#34;, &#34;Female&#34;, &#34;Female&#34;, &#34;Male&#34;, &#34;Female…
+</span></span><span style="display:flex;"><span>## $ SIZE_US    &lt;chr&gt; &#34;11&#34;, &#34;11.5&#34;, &#34;9.5&#34;, &#34;9.5&#34;, &#34;9&#34;, &#34;10.5&#34;, &#34;9&#34;, &#34;10&#34;, &#34;10.5&#34;,…
+</span></span><span style="display:flex;"><span>## $ UNIT_PRICE &lt;dbl&gt; 159, 199, 149, 159, 159, 159, 179, 169, 139, 149, 129, 169,…
+</span></span><span style="display:flex;"><span>## $ DISCOUNT   &lt;dbl&gt; 0.0, 0.2, 0.2, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1,…
+</span></span><span style="display:flex;"><span>## $ YEAR       &lt;dbl&gt; 2014, 2014, 2014, 2014, 2014, 2014, 2014, 2014, 2014, 2014,…
+</span></span><span style="display:flex;"><span>## $ MONTH      &lt;chr&gt; &#34;1&#34;, &#34;1&#34;, &#34;1&#34;, &#34;1&#34;, &#34;1&#34;, &#34;1&#34;, &#34;1&#34;, &#34;1&#34;, &#34;1&#34;, &#34;1&#34;, &#34;1&#34;, &#34;1&#34;,…
+</span></span><span style="display:flex;"><span>## $ SALE_PRICE &lt;dbl&gt; 159.0, 159.2, 119.2, 159.0, 159.0, 159.0, 179.0, 169.0, 139…
+</span></span></code></pre></div><h1 id="count--function-to-deal-with-categorical-variables">
+  <code>count ()</code> Function to deal with categorical variables
+  <a class="heading-link" href="#count--function-to-deal-with-categorical-variables">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<p>To know the frequency of different <strong>categorical</strong> variables, we can use the ``count()` function. For example - we want to know whether the dataset includes information about United States; we should write -</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="font-style:italic"># Number of Countries </span>
+</span></span><span style="display:flex;"><span>product %&gt;% 
+</span></span><span style="display:flex;"><span>  count(COUNTRY) 
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>## # A tibble: 4 × 2
+</span></span><span style="display:flex;"><span>##   COUNTRY            n
+</span></span><span style="display:flex;"><span>##   &lt;chr&gt;          &lt;int&gt;
+</span></span><span style="display:flex;"><span>## 1 Canada          2952
+</span></span><span style="display:flex;"><span>## 2 Germany         4392
+</span></span><span style="display:flex;"><span>## 3 United Kingdom  1737
+</span></span><span style="display:flex;"><span>## 4 United States   5886
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="font-style:italic"># Number of Years </span>
+</span></span><span style="display:flex;"><span>product %&gt;% 
+</span></span><span style="display:flex;"><span>  count(YEAR)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>## # A tibble: 3 × 2
+</span></span><span style="display:flex;"><span>##    YEAR     n
+</span></span><span style="display:flex;"><span>##   &lt;dbl&gt; &lt;int&gt;
+</span></span><span style="display:flex;"><span>## 1  2014  2753
+</span></span><span style="display:flex;"><span>## 2  2015  4848
+</span></span><span style="display:flex;"><span>## 3  2016  7366
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="font-style:italic"># Number of Invoices </span>
+</span></span><span style="display:flex;"><span>product %&gt;% 
+</span></span><span style="display:flex;"><span>  count(INVOICE_NO)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>## # A tibble: 13,389 × 2
+</span></span><span style="display:flex;"><span>##    INVOICE_NO     n
+</span></span><span style="display:flex;"><span>##    &lt;chr&gt;      &lt;int&gt;
+</span></span><span style="display:flex;"><span>##  1 52389          1
+</span></span><span style="display:flex;"><span>##  2 52390          1
+</span></span><span style="display:flex;"><span>##  3 52391          1
+</span></span><span style="display:flex;"><span>##  4 52392          1
+</span></span><span style="display:flex;"><span>##  5 52393          1
+</span></span><span style="display:flex;"><span>##  6 52394          1
+</span></span><span style="display:flex;"><span>##  7 52395          1
+</span></span><span style="display:flex;"><span>##  8 52396          1
+</span></span><span style="display:flex;"><span>##  9 52397          1
+</span></span><span style="display:flex;"><span>## 10 52398          1
+</span></span><span style="display:flex;"><span>## # … with 13,379 more rows
+</span></span></code></pre></div><p><strong>QUESTIONS</strong> - 1. How many products are available in the dataset?
+2. How many shoe sizes are available in the dataset (use <code>SIZE_US</code> variable)</p>
+<h1 id="create-a-new-data-set-that-satisfies-some-rows-conditions">
+  Create a new data set that satisfies some rows conditions
+  <a class="heading-link" href="#create-a-new-data-set-that-satisfies-some-rows-conditions">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<h2 id="2nd-second-verb---filter-">
+  2nd (Second) verb - <code>filter ()</code>
+  <a class="heading-link" href="#2nd-second-verb---filter-">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>If we want to subset our dataset by rows, then <code>filter ()</code> is used. For example - we want to create a data set that will include only observations for United States, then we should write the following code. The name of the dataset is given <code>US</code>.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>US &lt;- product %&gt;% 
+</span></span><span style="display:flex;"><span>  filter(
+</span></span><span style="display:flex;"><span>    COUNTRY == <span style="font-style:italic">&#34;United States&#34;</span>
+</span></span><span style="display:flex;"><span>  )   <span style="font-style:italic"># 2nd Verb</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>glimpse(US)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>## Rows: 5,886
+</span></span><span style="display:flex;"><span>## Columns: 14
+</span></span><span style="display:flex;"><span>## $ INVOICE_NO  &lt;chr&gt; &#34;52390&#34;, &#34;52392&#34;, &#34;52394&#34;, &#34;52397&#34;, &#34;52399&#34;, &#34;52399&#34;, &#34;523…
+</span></span><span style="display:flex;"><span>## $ DATE        &lt;date&gt; 2014-01-01, 2014-01-01, 2014-01-01, 2014-01-02, 2014-01-0…
+</span></span><span style="display:flex;"><span>## $ COUNTRY     &lt;chr&gt; &#34;United States&#34;, &#34;United States&#34;, &#34;United States&#34;, &#34;United…
+</span></span><span style="display:flex;"><span>## $ PRODUCT_ID  &lt;chr&gt; &#34;2230&#34;, &#34;2234&#34;, &#34;2173&#34;, &#34;2191&#34;, &#34;2197&#34;, &#34;2213&#34;, &#34;2206&#34;, &#34;2…
+</span></span><span style="display:flex;"><span>## $ SHOP        &lt;chr&gt; &#34;US15&#34;, &#34;US6&#34;, &#34;US15&#34;, &#34;US13&#34;, &#34;US1&#34;, &#34;US11&#34;, &#34;US2&#34;, &#34;US15…
+</span></span><span style="display:flex;"><span>## $ GENDER      &lt;chr&gt; &#34;Male&#34;, &#34;Female&#34;, &#34;Male&#34;, &#34;Male&#34;, &#34;Male&#34;, &#34;Female&#34;, &#34;Femal…
+</span></span><span style="display:flex;"><span>## $ SIZE_US     &lt;chr&gt; &#34;11.5&#34;, &#34;9.5&#34;, &#34;10.5&#34;, &#34;10.5&#34;, &#34;10&#34;, &#34;9.5&#34;, &#34;9.5&#34;, &#34;8&#34;, &#34;1…
+</span></span><span style="display:flex;"><span>## $ SIZE_EUROPE &lt;chr&gt; &#34;44-45&#34;, &#34;40&#34;, &#34;43-44&#34;, &#34;43-44&#34;, &#34;43&#34;, &#34;40&#34;, &#34;40&#34;, &#34;41&#34;, &#34;…
+</span></span><span style="display:flex;"><span>## $ SIZE_UK     &lt;dbl&gt; 11.0, 7.5, 10.0, 10.0, 9.5, 7.5, 7.5, 7.5, 10.5, 7.5, 9.5,…
+</span></span><span style="display:flex;"><span>## $ UNIT_PRICE  &lt;dbl&gt; 199, 159, 159, 139, 129, 169, 139, 139, 149, 159, 129, 169…
+</span></span><span style="display:flex;"><span>## $ DISCOUNT    &lt;dbl&gt; 0.2, 0.0, 0.0, 0.0, 0.0, 0.1, 0.0, 0.0, 0.5, 0.0, 0.0, 0.1…
+</span></span><span style="display:flex;"><span>## $ YEAR        &lt;dbl&gt; 2014, 2014, 2014, 2014, 2014, 2014, 2014, 2014, 2014, 2014…
+</span></span><span style="display:flex;"><span>## $ MONTH       &lt;chr&gt; &#34;1&#34;, &#34;1&#34;, &#34;1&#34;, &#34;1&#34;, &#34;1&#34;, &#34;1&#34;, &#34;1&#34;, &#34;1&#34;, &#34;1&#34;, &#34;1&#34;, &#34;1&#34;, &#34;1&#34;…
+</span></span><span style="display:flex;"><span>## $ SALE_PRICE  &lt;dbl&gt; 159.2, 159.0, 159.0, 139.0, 129.0, 152.1, 139.0, 139.0, 74…
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>Germany &lt;- product %&gt;% 
+</span></span><span style="display:flex;"><span>  filter(
+</span></span><span style="display:flex;"><span>    COUNTRY == <span style="font-style:italic">&#34;Germany&#34;</span> &amp; YEAR %in% c (<span style="font-style:italic">&#39;2014&#39;</span>, <span style="font-style:italic">&#39;2015&#39;</span>)
+</span></span><span style="display:flex;"><span>  ) 
+</span></span><span style="display:flex;"><span>glimpse(Germany)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>## Rows: 2,229
+</span></span><span style="display:flex;"><span>## Columns: 14
+</span></span><span style="display:flex;"><span>## $ INVOICE_NO  &lt;chr&gt; &#34;52395&#34;, &#34;52401&#34;, &#34;52401&#34;, &#34;52408&#34;, &#34;52409&#34;, &#34;52414&#34;, &#34;524…
+</span></span><span style="display:flex;"><span>## $ DATE        &lt;date&gt; 2014-01-02, 2014-01-03, 2014-01-03, 2014-01-04, 2014-01-0…
+</span></span><span style="display:flex;"><span>## $ COUNTRY     &lt;chr&gt; &#34;Germany&#34;, &#34;Germany&#34;, &#34;Germany&#34;, &#34;Germany&#34;, &#34;Germany&#34;, &#34;Ge…
+</span></span><span style="display:flex;"><span>## $ PRODUCT_ID  &lt;chr&gt; &#34;2200&#34;, &#34;2235&#34;, &#34;2197&#34;, &#34;2206&#34;, &#34;2157&#34;, &#34;2235&#34;, &#34;2239&#34;, &#34;2…
+</span></span><span style="display:flex;"><span>## $ SHOP        &lt;chr&gt; &#34;GER2&#34;, &#34;GER1&#34;, &#34;GER1&#34;, &#34;GER2&#34;, &#34;GER2&#34;, &#34;GER1&#34;, &#34;GER2&#34;, &#34;G…
+</span></span><span style="display:flex;"><span>## $ GENDER      &lt;chr&gt; &#34;Female&#34;, &#34;Male&#34;, &#34;Female&#34;, &#34;Male&#34;, &#34;Male&#34;, &#34;Male&#34;, &#34;Femal…
+</span></span><span style="display:flex;"><span>## $ SIZE_US     &lt;chr&gt; &#34;9&#34;, &#34;10.5&#34;, &#34;8.5&#34;, &#34;8.5&#34;, &#34;12&#34;, &#34;9.5&#34;, &#34;8.5&#34;, &#34;10.5&#34;, &#34;10…
+</span></span><span style="display:flex;"><span>## $ SIZE_EUROPE &lt;chr&gt; &#34;39-40&#34;, &#34;43-44&#34;, &#34;39&#34;, &#34;41-42&#34;, &#34;45&#34;, &#34;42-43&#34;, &#34;39&#34;, &#34;43-…
+</span></span><span style="display:flex;"><span>## $ SIZE_UK     &lt;dbl&gt; 7.0, 10.0, 6.5, 8.0, 11.5, 9.0, 6.5, 10.0, 9.5, 8.0, 10.0,…
+</span></span><span style="display:flex;"><span>## $ UNIT_PRICE  &lt;dbl&gt; 179, 169, 179, 149, 149, 169, 129, 169, 199, 149, 169, 189…
+</span></span><span style="display:flex;"><span>## $ DISCOUNT    &lt;dbl&gt; 0.0, 0.5, 0.2, 0.2, 0.2, 0.3, 0.5, 0.5, 0.0, 0.2, 0.5, 0.1…
+</span></span><span style="display:flex;"><span>## $ YEAR        &lt;dbl&gt; 2014, 2014, 2014, 2014, 2014, 2014, 2014, 2014, 2014, 2014…
+</span></span><span style="display:flex;"><span>## $ MONTH       &lt;chr&gt; &#34;1&#34;, &#34;1&#34;, &#34;1&#34;, &#34;1&#34;, &#34;1&#34;, &#34;1&#34;, &#34;1&#34;, &#34;1&#34;, &#34;1&#34;, &#34;1&#34;, &#34;1&#34;, &#34;1&#34;…
+</span></span><span style="display:flex;"><span>## $ SALE_PRICE  &lt;dbl&gt; 179.0, 84.5, 143.2, 119.2, 119.2, 118.3, 64.5, 84.5, 199.0…
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>count (Germany, YEAR)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>## # A tibble: 2 × 2
+</span></span><span style="display:flex;"><span>##    YEAR     n
+</span></span><span style="display:flex;"><span>##   &lt;dbl&gt; &lt;int&gt;
+</span></span><span style="display:flex;"><span>## 1  2014   710
+</span></span><span style="display:flex;"><span>## 2  2015  1519
+</span></span></code></pre></div><p><strong>QUESTIONS</strong> - 1. Filter those observations that belong to United States and Germany and that are related to Male Gender.</p>
+<h1 id="average-price-of-shoes">
+  Average Price of Shoes
+  <a class="heading-link" href="#average-price-of-shoes">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<h2 id="3rd-third-verb---summarize-">
+  3rd (Third) verb - <code>summarize ()</code>
+  <a class="heading-link" href="#3rd-third-verb---summarize-">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>The <code>summarize ()</code> function is used to calculate different statistics such as mean, median, standard deviation, maximum, and minimum value. For example, we want to calculate the average price of all products -</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>product %&gt;% 
+</span></span><span style="display:flex;"><span>  summarize(AVG_PRICE = mean(SALE_PRICE)) <span style="font-style:italic"># 3rd Verb</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>## # A tibble: 1 × 1
+</span></span><span style="display:flex;"><span>##   AVG_PRICE
+</span></span><span style="display:flex;"><span>##       &lt;dbl&gt;
+</span></span><span style="display:flex;"><span>## 1      144.
+</span></span></code></pre></div><h2 id="4th-fourth-verb---group_by-">
+  4th (Fourth) verb - <code>group_by ()</code>
+  <a class="heading-link" href="#4th-fourth-verb---group_by-">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>The <code>group_by ()</code> function is very useful when it is used with <code>summarize ()</code> function. For example, we want to know the average price for each country; then, we should write the following code -</p>
+<h2 id="5th-fifth-verb---arrange-">
+  5th (Fifth) verb - <code>arrange ()</code>
+  <a class="heading-link" href="#5th-fifth-verb---arrange-">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>The <code>arrange ()</code>function allows you to reorder your data set by one or more variables.
+For example, if you want to reorder the average price in difference countries, you need to execute the following code -</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>product %&gt;% 
+</span></span><span style="display:flex;"><span>  group_by(COUNTRY) %&gt;% <span style="font-style:italic"># 4th Verb </span>
+</span></span><span style="display:flex;"><span>  summarise(AVG_PRICE = mean(SALE_PRICE)) %&gt;% 
+</span></span><span style="display:flex;"><span>  arrange(AVG_PRICE) <span style="font-style:italic"># 5th Verb</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>## # A tibble: 4 × 2
+</span></span><span style="display:flex;"><span>##   COUNTRY        AVG_PRICE
+</span></span><span style="display:flex;"><span>##   &lt;chr&gt;              &lt;dbl&gt;
+</span></span><span style="display:flex;"><span>## 1 Germany             144.
+</span></span><span style="display:flex;"><span>## 2 United States       144.
+</span></span><span style="display:flex;"><span>## 3 Canada              144.
+</span></span><span style="display:flex;"><span>## 4 United Kingdom      146.
+</span></span></code></pre></div><p><strong>QUESTIONS</strong> - 1. Calculate the average price for both Gender. Who pays greater price?
+2. Calculate the average discount for both Gender. Who gets higher discount?
+3. Calculate the average discount for each month. In which month highest discount is provided?</p>
+<h1 id="reshaping-the-data">
+  Reshaping the Data
+  <a class="heading-link" href="#reshaping-the-data">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<p>Sometimes we need to reshape our data for different purposes. This is like <code>pivot table</code> in excel. There are two important functions from <code>tidyr</code> that can be used to reshaped data. The first one is - <code>pivot_wider</code> function and the second one is <code>pivot_longer</code> function. <code>pivot_wider</code> widens a <em>LONG</em> data whereas <code>pivot_longer</code> lengthens a <em>WIDE</em> data.</p>
+<h2 id="identify-total-sales-by-gender-of-each-product-product_id">
+  Identify Total Sales by Gender of Each Product (PRODUCT_ID)
+  <a class="heading-link" href="#identify-total-sales-by-gender-of-each-product-product_id">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<h3 id="6th-sixth-verb---mutate-">
+  6th (Sixth) verb - <code>mutate ()</code>
+  <a class="heading-link" href="#6th-sixth-verb---mutate-">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>The function <code>mutate ()</code> is used to create new variables (columns). For example, we want to know the <code>TOTAL_SALE</code>, which is the sum of the sum of sale by gender; then, we should write the following code -</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>product %&gt;%
+</span></span><span style="display:flex;"><span>  count(PRODUCT_ID, GENDER) %&gt;%
+</span></span><span style="display:flex;"><span>  arrange(-n) %&gt;% 
+</span></span><span style="display:flex;"><span>  pivot_wider(
+</span></span><span style="display:flex;"><span>    names_from = GENDER,
+</span></span><span style="display:flex;"><span>    values_from = n
+</span></span><span style="display:flex;"><span>  ) %&gt;% 
+</span></span><span style="display:flex;"><span>  rename_all(toupper) %&gt;% 
+</span></span><span style="display:flex;"><span>  rename_at(vars(c(<span style="font-style:italic">&#34;MALE&#34;</span>,<span style="font-style:italic">&#34;FEMALE&#34;</span>)), ~paste0(.x,<span style="font-style:italic">&#34;_SALE&#34;</span>)) %&gt;% 
+</span></span><span style="display:flex;"><span>  mutate(
+</span></span><span style="display:flex;"><span>    TOTAL_SALE = MALE_SALE + FEMALE_SALE
+</span></span><span style="display:flex;"><span>  ) %&gt;% <span style="font-style:italic"># 6th Verb</span>
+</span></span><span style="display:flex;"><span>  arrange(-TOTAL_SALE)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>## # A tibble: 96 × 4
+</span></span><span style="display:flex;"><span>##    PRODUCT_ID MALE_SALE FEMALE_SALE TOTAL_SALE
+</span></span><span style="display:flex;"><span>##    &lt;chr&gt;          &lt;int&gt;       &lt;int&gt;      &lt;int&gt;
+</span></span><span style="display:flex;"><span>##  1 2190             132          75        207
+</span></span><span style="display:flex;"><span>##  2 2226             123          81        204
+</span></span><span style="display:flex;"><span>##  3 2213             114          90        204
+</span></span><span style="display:flex;"><span>##  4 2192             135          66        201
+</span></span><span style="display:flex;"><span>##  5 2158             120          78        198
+</span></span><span style="display:flex;"><span>##  6 2172             114          75        189
+</span></span><span style="display:flex;"><span>##  7 2179             102          87        189
+</span></span><span style="display:flex;"><span>##  8 2239              87         102        189
+</span></span><span style="display:flex;"><span>##  9 2225             117          69        186
+</span></span><span style="display:flex;"><span>## 10 2183             123          60        183
+</span></span><span style="display:flex;"><span>## # … with 86 more rows
+</span></span></code></pre></div><p><strong>QUESTIONS</strong> - 1. Identify Total Sales by Gender of Each Shoe Size (SIZE_US)</p>
+<h1 id="bar-chart">
+  Bar Chart
+  <a class="heading-link" href="#bar-chart">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<h2 id="create-a-bar-chart-of-sale-of-shoes-by-gender-of-different-sizes">
+  Create a Bar Chart of Sale of Shoes by Gender of Different Sizes
+  <a class="heading-link" href="#create-a-bar-chart-of-sale-of-shoes-by-gender-of-different-sizes">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>product %&gt;%
+</span></span><span style="display:flex;"><span>  count(SIZE_US, GENDER) %&gt;%
+</span></span><span style="display:flex;"><span>  pivot_wider(
+</span></span><span style="display:flex;"><span>    names_from = <span style="font-style:italic">&#34;GENDER&#34;</span>,
+</span></span><span style="display:flex;"><span>    values_from = <span style="font-style:italic">&#34;n&#34;</span>
+</span></span><span style="display:flex;"><span>  ) %&gt;%
+</span></span><span style="display:flex;"><span>  rename_all(toupper) %&gt;%
+</span></span><span style="display:flex;"><span>  replace(is.na(.),0) %&gt;%
+</span></span><span style="display:flex;"><span>  mutate(
+</span></span><span style="display:flex;"><span>    TOTAL_SALES = FEMALE + MALE
+</span></span><span style="display:flex;"><span>  ) %&gt;%
+</span></span><span style="display:flex;"><span>  pivot_longer(
+</span></span><span style="display:flex;"><span>    cols = c(<span style="font-style:italic">&#34;FEMALE&#34;</span>, <span style="font-style:italic">&#34;MALE&#34;</span>),
+</span></span><span style="display:flex;"><span>    names_to = <span style="font-style:italic">&#34;GENDER&#34;</span>,
+</span></span><span style="display:flex;"><span>    values_to = <span style="font-style:italic">&#34;GENDERSALES&#34;</span>
+</span></span><span style="display:flex;"><span>  )%&gt;%
+</span></span><span style="display:flex;"><span>  ggplot(aes(x=reorder(SIZE_US,as.numeric(SIZE_US)), y= GENDERSALES, fill = GENDER))+
+</span></span><span style="display:flex;"><span>  geom_bar(stat = <span style="font-style:italic">&#34;identity&#34;</span>)+
+</span></span><span style="display:flex;"><span>  labs(x = <span style="font-style:italic">&#34;SHOE SIZE&#34;</span>,
+</span></span><span style="display:flex;"><span>       y = <span style="font-style:italic">&#34;TOTAL SALES&#34;</span>,
+</span></span><span style="display:flex;"><span>       title = <span style="font-style:italic">&#34;SALES OF DIFFERENT SIZES OF SHOE&#34;</span>)+
+</span></span><span style="display:flex;"><span>  geom_text(aes(label = GENDERSALES),
+</span></span><span style="display:flex;"><span>            position = position_stack(vjust = 0.5),
+</span></span><span style="display:flex;"><span>            color = <span style="font-style:italic">&#34;black&#34;</span>,
+</span></span><span style="display:flex;"><span>            size = 2
+</span></span><span style="display:flex;"><span>  )+
+</span></span><span style="display:flex;"><span>  theme(legend.title = element_blank())
+</span></span></code></pre></div><img src="/posts/data-analysis-tidyverse_files/figure-html/unnamed-chunk-12-1.png" width="672" />
+<h2 id="create-a-bar-chart-of-sale-of-shoes-by-gender-of-different-sizes-in-different-countries">
+  Create a Bar Chart of Sale of Shoes by Gender of Different Sizes in different countries
+  <a class="heading-link" href="#create-a-bar-chart-of-sale-of-shoes-by-gender-of-different-sizes-in-different-countries">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>product %&gt;%
+</span></span><span style="display:flex;"><span>  count(SIZE_US, GENDER, COUNTRY) %&gt;%
+</span></span><span style="display:flex;"><span>  ggplot(aes(x=reorder(SIZE_US,as.numeric(SIZE_US)), y= n, fill = GENDER))+
+</span></span><span style="display:flex;"><span>  geom_bar(stat = <span style="font-style:italic">&#34;identity&#34;</span>)+
+</span></span><span style="display:flex;"><span>  labs(x = <span style="font-style:italic">&#34;SHOE SIZE&#34;</span>,
+</span></span><span style="display:flex;"><span>       y = <span style="font-style:italic">&#34;TOTAL SALES&#34;</span>,
+</span></span><span style="display:flex;"><span>       title = <span style="font-style:italic">&#34;SALES OF DIFFERENT SIZES OF SHOE BY GENDER IN DIFFERENT COUNTRIES&#34;</span>
+</span></span><span style="display:flex;"><span>  )+
+</span></span><span style="display:flex;"><span>  geom_text(
+</span></span><span style="display:flex;"><span>    aes(label = n),
+</span></span><span style="display:flex;"><span>    position = position_stack(vjust = 0.5),
+</span></span><span style="display:flex;"><span>    color = <span style="font-style:italic">&#34;black&#34;</span>,
+</span></span><span style="display:flex;"><span>    size = 2
+</span></span><span style="display:flex;"><span>  )+
+</span></span><span style="display:flex;"><span>  facet_wrap(~ COUNTRY, nrow = 2, ncol = 2
+</span></span><span style="display:flex;"><span>  )+
+</span></span><span style="display:flex;"><span>  theme(legend.position=<span style="font-style:italic">&#34;top&#34;</span>,
+</span></span><span style="display:flex;"><span>        legend.title = element_blank())+
+</span></span><span style="display:flex;"><span>  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+</span></span></code></pre></div><img src="/posts/data-analysis-tidyverse_files/figure-html/unnamed-chunk-13-1.png" width="672" />
+<h2 id="create-a-bar-chart-for-product-id-product_id-2190-sales-by-shoes-sizes">
+  Create a Bar Chart for Product ID (PRODUCT_ID) 2190 Sales by shoes sizes
+  <a class="heading-link" href="#create-a-bar-chart-for-product-id-product_id-2190-sales-by-shoes-sizes">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>product %&gt;% 
+</span></span><span style="display:flex;"><span>  filter(
+</span></span><span style="display:flex;"><span>    PRODUCT_ID == <span style="font-style:italic">&#34;2190&#34;</span>
+</span></span><span style="display:flex;"><span>  ) %&gt;% 
+</span></span><span style="display:flex;"><span>  count(SIZE_US) %&gt;% 
+</span></span><span style="display:flex;"><span>  mutate(SIZE_US = (str_c (<span style="font-style:italic">&#34;SIZE_&#34;</span>, SIZE_US))) %&gt;% 
+</span></span><span style="display:flex;"><span>  ggplot(aes(x = reorder(SIZE_US,n), y = n))+
+</span></span><span style="display:flex;"><span>  geom_bar(stat=<span style="font-style:italic">&#34;identity&#34;</span>, color = <span style="font-style:italic">&#34;blue&#34;</span>, fill = <span style="font-style:italic">&#34;orange&#34;</span>)+
+</span></span><span style="display:flex;"><span>  coord_flip()+
+</span></span><span style="display:flex;"><span>  geom_text(aes(label = n), stat = <span style="font-style:italic">&#34;identity&#34;</span>, hjust = -0.2)+ <span style="font-style:italic"># Here also try to use vjust and take out coord_flip()</span>
+</span></span><span style="display:flex;"><span>  xlab(<span style="font-style:italic">&#34;SHOE SIZE&#34;</span>)+
+</span></span><span style="display:flex;"><span>  ylab(<span style="font-style:italic">&#34;SALES (UNIT)&#34;</span>)+
+</span></span><span style="display:flex;"><span>  ggtitle(<span style="font-style:italic">&#34;DISTRIBUTION of SALES for PRODUCT ID 2190&#34;</span>)
+</span></span></code></pre></div><img src="/posts/data-analysis-tidyverse_files/figure-html/unnamed-chunk-14-1.png" width="672" />
+<p><strong>QUESTIONS</strong> - 1. Create a Bar Chart for Product ID (PRODUCT_ID) 2190 Sales by Gender of Different Shoes Sizes</p>
+<h1 id="relationship-between-shoe-size-and-price">
+  Relationship between Shoe Size and Price
+  <a class="heading-link" href="#relationship-between-shoe-size-and-price">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>product %&gt;%
+</span></span><span style="display:flex;"><span>  ggplot(
+</span></span><span style="display:flex;"><span>    aes(x = as.numeric(SIZE_US), y = UNIT_PRICE)
+</span></span><span style="display:flex;"><span>  )+
+</span></span><span style="display:flex;"><span>  geom_smooth(se = <span style="font-weight:bold">FALSE</span>)+
+</span></span><span style="display:flex;"><span>  xlab(<span style="font-style:italic">&#34;SHOE SIZE (US)&#34;</span>)+
+</span></span><span style="display:flex;"><span>  ylab(<span style="font-style:italic">&#34;PRICE&#34;</span>)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>## `geom_smooth()` using method = &#39;gam&#39; and formula = &#39;y ~ s(x, bs = &#34;cs&#34;)&#39;
+</span></span></code></pre></div><img src="/posts/data-analysis-tidyverse_files/figure-html/unnamed-chunk-15-1.png" width="672" />
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>product %&gt;%
+</span></span><span style="display:flex;"><span>  ggplot(
+</span></span><span style="display:flex;"><span>    aes(x = as.numeric(SIZE_US), y = UNIT_PRICE, color = COUNTRY)
+</span></span><span style="display:flex;"><span>  )+
+</span></span><span style="display:flex;"><span>  geom_smooth(se = <span style="font-weight:bold">FALSE</span>)+
+</span></span><span style="display:flex;"><span>  xlab(<span style="font-style:italic">&#34;SHOE SIZE (US)&#34;</span>)+
+</span></span><span style="display:flex;"><span>  ylab(<span style="font-style:italic">&#34;PRICE&#34;</span>)+
+</span></span><span style="display:flex;"><span>  theme(legend.title = element_blank())
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>## `geom_smooth()` using method = &#39;gam&#39; and formula = &#39;y ~ s(x, bs = &#34;cs&#34;)&#39;
+</span></span></code></pre></div><img src="/posts/data-analysis-tidyverse_files/figure-html/unnamed-chunk-15-2.png" width="672" />
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>product %&gt;%
+</span></span><span style="display:flex;"><span>  ggplot(
+</span></span><span style="display:flex;"><span>    aes(x = as.numeric(SIZE_US), y = UNIT_PRICE)
+</span></span><span style="display:flex;"><span>  )+
+</span></span><span style="display:flex;"><span>  geom_smooth(se = <span style="font-weight:bold">FALSE</span>, color = <span style="font-style:italic">&#34;red&#34;</span>)+
+</span></span><span style="display:flex;"><span>  xlab(<span style="font-style:italic">&#34;SHOE SIZE (US)&#34;</span>)+
+</span></span><span style="display:flex;"><span>  ylab(<span style="font-style:italic">&#34;PRICE&#34;</span>)+
+</span></span><span style="display:flex;"><span>  facet_wrap(~COUNTRY)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>## `geom_smooth()` using method = &#39;gam&#39; and formula = &#39;y ~ s(x, bs = &#34;cs&#34;)&#39;
+</span></span></code></pre></div><img src="/posts/data-analysis-tidyverse_files/figure-html/unnamed-chunk-15-3.png" width="672" />
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>product %&gt;%
+</span></span><span style="display:flex;"><span>  ggplot(
+</span></span><span style="display:flex;"><span>    aes(x = as.numeric(SIZE_US), y = UNIT_PRICE)
+</span></span><span style="display:flex;"><span>  )+
+</span></span><span style="display:flex;"><span>  geom_smooth(se = <span style="font-weight:bold">FALSE</span>)+
+</span></span><span style="display:flex;"><span>  xlab(<span style="font-style:italic">&#34;SHOE SIZE (US)&#34;</span>)+
+</span></span><span style="display:flex;"><span>  ylab(<span style="font-style:italic">&#34;PRICE&#34;</span>)+
+</span></span><span style="display:flex;"><span>  facet_wrap(~GENDER)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>## `geom_smooth()` using method = &#39;gam&#39; and formula = &#39;y ~ s(x, bs = &#34;cs&#34;)&#39;
+</span></span></code></pre></div><img src="/posts/data-analysis-tidyverse_files/figure-html/unnamed-chunk-15-4.png" width="672" />
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>product %&gt;%
+</span></span><span style="display:flex;"><span>  ggplot(
+</span></span><span style="display:flex;"><span>    aes(x = as.numeric(SIZE_US), y = UNIT_PRICE, color = GENDER)
+</span></span><span style="display:flex;"><span>  )+
+</span></span><span style="display:flex;"><span>  geom_smooth(se = <span style="font-weight:bold">FALSE</span>)+
+</span></span><span style="display:flex;"><span>  xlab(<span style="font-style:italic">&#34;SHOE SIZE (US)&#34;</span>)+
+</span></span><span style="display:flex;"><span>  ylab(<span style="font-style:italic">&#34;PRICE&#34;</span>)+
+</span></span><span style="display:flex;"><span>  theme(legend.title = element_blank())
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>## `geom_smooth()` using method = &#39;gam&#39; and formula = &#39;y ~ s(x, bs = &#34;cs&#34;)&#39;
+</span></span></code></pre></div><img src="/posts/data-analysis-tidyverse_files/figure-html/unnamed-chunk-15-5.png" width="672" />
+<h2 id="relationship-between-shoe-size-and-price-in-different-gender-and-in-different-countries">
+  Relationship between Shoe Size and Price in Different Gender and in Different Countries
+  <a class="heading-link" href="#relationship-between-shoe-size-and-price-in-different-gender-and-in-different-countries">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>product %&gt;%
+</span></span><span style="display:flex;"><span>  ggplot(
+</span></span><span style="display:flex;"><span>    aes(x = as.numeric(SIZE_US), y = UNIT_PRICE, color = GENDER)
+</span></span><span style="display:flex;"><span>  )+
+</span></span><span style="display:flex;"><span>  geom_smooth(se = <span style="font-weight:bold">FALSE</span>)+
+</span></span><span style="display:flex;"><span>  xlab(<span style="font-style:italic">&#34;SHOE SIZE (US)&#34;</span>)+
+</span></span><span style="display:flex;"><span>  ylab(<span style="font-style:italic">&#34;PRICE&#34;</span>)+
+</span></span><span style="display:flex;"><span>  facet_wrap(~COUNTRY)+
+</span></span><span style="display:flex;"><span>  theme(legend.title = element_blank())
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>## `geom_smooth()` using method = &#39;gam&#39; and formula = &#39;y ~ s(x, bs = &#34;cs&#34;)&#39;
+</span></span></code></pre></div><img src="/posts/data-analysis-tidyverse_files/figure-html/unnamed-chunk-16-1.png" width="672" />
+<p><strong>QUESTIONS</strong> - 1. Do the Above Analyses for the Relationship between Shoe Size and Discount</p>
+<h1 id="relationship-between-sales-and-month">
+  Relationship between Sales and Month
+  <a class="heading-link" href="#relationship-between-sales-and-month">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>product %&gt;%
+</span></span><span style="display:flex;"><span>  count(MONTH) %&gt;%
+</span></span><span style="display:flex;"><span>  ggplot(aes(x = reorder(MONTH,as.numeric(MONTH) ), y = n))+
+</span></span><span style="display:flex;"><span>  geom_point(color = <span style="font-style:italic">&#34;red&#34;</span>)+
+</span></span><span style="display:flex;"><span>  labs(x = <span style="font-style:italic">&#34;MONTH&#34;</span>,
+</span></span><span style="display:flex;"><span>       y = <span style="font-style:italic">&#34;TOTAL SALES&#34;</span>, title = <span style="font-style:italic">&#34;SALES IN DIFFERENT MONTHS&#34;</span>)
+</span></span></code></pre></div><img src="/posts/data-analysis-tidyverse_files/figure-html/unnamed-chunk-17-1.png" width="672" />
+<p><strong>QUESTIONS</strong> - 1. Visualize the Relationship between Sales and Month in different countries</p>
+<h1 id="conclusion">
+  Conclusion
+  <a class="heading-link" href="#conclusion">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<p>Data science is the number 1 most promising job in the US in recent years<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. Many disciplines around the world are incorporating the knowledge of data science in their day to operations. The skills employers most frequently seek in data sciene job posting are Python, R, ans SQL. It is hoped that the preliminary discussion in this project will help you to get some idea about data science.</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p><a href="https://www.techrepublic.com/article/why-data-scientist-is-the-most-promising-job-of-2019/">https://www.techrepublic.com/article/why-data-scientist-is-the-most-promising-job-of-2019/</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+      2019 -
+    
+    2023
+     Sharif Islam, DBA, CPA, CMA 
+    ·
+    
+    Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+
+</html>
