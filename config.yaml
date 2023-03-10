@@ -61,12 +61,15 @@ languages:
         - name: PROJECTS
           url: projects/
           weight: 3
+        - name: BOOKS
+          url: books/
+          weight: 4
         - name: RESUME
           url: "CV/Sharif_Resume_R.pdf"
-          weight: 4
+          weight: 5
         - name: CONTACT
           url: contact/
-          weight: 5
+          weight: 6
 markup:
   goldmark:
     renderer:
