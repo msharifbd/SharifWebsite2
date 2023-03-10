@@ -3,4 +3,4 @@ slug: contact
 title: Contact
 ---
 
-Follow me, @johndoe.
+If you want to contact with me, please email me at <mdshariful.islam@business.siu.edu>
