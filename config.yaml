@@ -41,6 +41,11 @@ params:
       name: LinkedIn
       url: "https://www.linkedin.com/in/sharif-islam-dba-cpa-cma-09345730/"
       weight: 3
+    - icon: fa fa-2x fa-facebook
+      name: LinkedIn
+      url: "https://www.facebook.com/in/sharif.is"
+      weight: 4
+      
 
 taxonomies:
   author: authors
