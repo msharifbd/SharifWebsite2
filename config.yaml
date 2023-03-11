@@ -72,9 +72,12 @@ languages:
         - name: RESUME
           url: "CV/Sharif_Resume_R.pdf"
           weight: 5
+        - name: TEACHING
+          url: classes/
+          weight: 6
         - name: CONTACT
           url: contact/
-          weight: 6
+          weight: 7
 markup:
   goldmark:
     renderer:
