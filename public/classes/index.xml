@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Classes on Sharif Islam</title>
+    <link>http://www.example.com/classes/</link>
+    <description>Recent content in Classes on Sharif Islam</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 11 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://www.example.com/classes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ACCT360 Accounting Information Systems</title>
+      <link>http://www.example.com/classes/acct360-ais/</link>
+      <pubDate>Sat, 11 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.example.com/classes/acct360-ais/</guid>
+      <description> Introduction Link to heading Syllabus Link to heading </description>
+    </item>
+    
+    <item>
+      <title>ACCT460 Auditing &amp; Assurance Services</title>
+      <link>http://www.example.com/classes/acct460-auditing/</link>
+      <pubDate>Sat, 11 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.example.com/classes/acct460-auditing/</guid>
+      <description> Introduction Link to heading Syllabus Link to heading </description>
+    </item>
+    
+    <item>
+      <title>BSAN405 Machine Learning in Business</title>
+      <link>http://www.example.com/classes/bsan405-machine-learning/</link>
+      <pubDate>Sat, 11 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.example.com/classes/bsan405-machine-learning/</guid>
+      <description> Introduction Link to heading Syllabus Link to heading </description>
+    </item>
+    
+  </channel>
+</rss>

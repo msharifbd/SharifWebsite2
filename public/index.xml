@@ -6,7 +6,43 @@
     <description>Recent content on Sharif Islam</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 03 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://www.example.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 11 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://www.example.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ACCT360 Accounting Information Systems</title>
+      <link>http://www.example.com/classes/acct360-ais/</link>
+      <pubDate>Sat, 11 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.example.com/classes/acct360-ais/</guid>
+      <description> Introduction Link to heading Syllabus Link to heading </description>
+    </item>
+    
+    <item>
+      <title>ACCT460 Auditing &amp; Assurance Services</title>
+      <link>http://www.example.com/classes/acct460-auditing/</link>
+      <pubDate>Sat, 11 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.example.com/classes/acct460-auditing/</guid>
+      <description> Introduction Link to heading Syllabus Link to heading </description>
+    </item>
+    
+    <item>
+      <title>BSAN405 Machine Learning in Business</title>
+      <link>http://www.example.com/classes/bsan405-machine-learning/</link>
+      <pubDate>Sat, 11 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.example.com/classes/bsan405-machine-learning/</guid>
+      <description> Introduction Link to heading Syllabus Link to heading </description>
+    </item>
+    
+    <item>
+      <title>Books</title>
+      <link>http://www.example.com/books/</link>
+      <pubDate>Fri, 10 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.example.com/books/</guid>
+      <description>Data Analytics in Accounting Link to heading Data analytics is important for accounting profession because data gathering and analytics technologies have the potential to fundamentally change accounting and auditing task processes (Schneider et al. 2015). Scholars note that the emergence of data analytics will significantly change the infer/predict/assure (e.g., insight/foresight/oversight) tasks performed by accountants and auditors. Big data and analytics have increasingly important implications for accounting and will provide the means to improve managerial accounting, financial accounting, and financial reporting practices (Warren Jr, Moffitt, and Byrnes 2015).</description>
+    </item>
+    
     <item>
       <title>Data Analysis Using Tidyverse</title>
       <link>http://www.example.com/posts/data-analysis-tidyverse/</link>
@@ -77,15 +113,6 @@ summary(cars)## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 2
     </item>
     
     <item>
-      <title>Guia de Sintaxe Markdown</title>
-      <link>http://www.example.com/posts/markdown-syntax.pt-br/</link>
-      <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>http://www.example.com/posts/markdown-syntax.pt-br/</guid>
-      <description>&lt;p&gt;Esse artigo é um exemplo básico para mostrar a sintaxe Markdown que é usada nos arquivos de conteúdo do Hugo. Ele também mostrar como cada elemento básico HTML é estilizado com CSS com os temas do Hugo.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
       <title>Markdown Syntax Guide</title>
       <link>http://www.example.com/posts/markdown-syntax/</link>
       <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
@@ -95,30 +122,12 @@ summary(cars)## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 2
     </item>
     
     <item>
-      <title>Conteúdo Rico</title>
-      <link>http://www.example.com/posts/rich-content.pt-br/</link>
-      <pubDate>Sun, 10 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>http://www.example.com/posts/rich-content.pt-br/</guid>
-      <description>&lt;p&gt;O Hugo vem com vários &lt;a href=&#34;https://gohugo.io/content-management/shortcodes/#use-hugos-built-in-shortcodes&#34;&gt;Shortcodes Internos&lt;/a&gt; para conteúdo rico, assim como uma &lt;a href=&#34;https://gohugo.io/about/hugo-and-gdpr/&#34;&gt;Configuração de Privacidade&lt;/a&gt; e uma gama de Shortcodes simples que permitem embutir versões estáticas e sem JS de várias de redes sociais.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
       <title>Rich Content</title>
       <link>http://www.example.com/posts/rich-content/</link>
       <pubDate>Sun, 10 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>http://www.example.com/posts/rich-content/</guid>
       <description>&lt;p&gt;Hugo ships with several &lt;a href=&#34;https://gohugo.io/content-management/shortcodes/#use-hugos-built-in-shortcodes&#34;&gt;Built-in Shortcodes&lt;/a&gt; for rich content, along with a &lt;a href=&#34;https://gohugo.io/about/hugo-and-gdpr/&#34;&gt;Privacy Config&lt;/a&gt; and a set of Simple Shortcodes that enable static and no-JS versions of various social media embeds.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Mais Conteúdo Rico</title>
-      <link>http://www.example.com/posts/more-rich-content.pt-br/</link>
-      <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>http://www.example.com/posts/more-rich-content.pt-br/</guid>
-      <description>&lt;p&gt;O Hugo Coder proporciona alguns Shortcodes Customizados.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -140,24 +149,6 @@ summary(cars)## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 2
     </item>
     
     <item>
-      <title>Texto de Exemplo</title>
-      <link>http://www.example.com/posts/placeholder-text.pt-br/</link>
-      <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>http://www.example.com/posts/placeholder-text.pt-br/</guid>
-      <description>&lt;p&gt;Lorem est tota propiore conpellat pectoribus de pectora summo.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Configuração de Equações Matemáticas</title>
-      <link>http://www.example.com/posts/math-typesetting.pt-br/</link>
-      <pubDate>Fri, 08 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>http://www.example.com/posts/math-typesetting.pt-br/</guid>
-      <description>&lt;p&gt;Em um projeto Hugo as Notações Matemáticas podem ser usadas com a ajuda de bibliotecas JavaScript de terceiros.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
       <title>Math Typesetting</title>
       <link>http://www.example.com/posts/math-typesetting/</link>
       <pubDate>Fri, 08 Mar 2019 00:00:00 +0000</pubDate>
@@ -176,25 +167,7 @@ summary(cars)## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 2
     </item>
     
     <item>
-      <title>Suporte a Emojis</title>
-      <link>http://www.example.com/posts/emoji-support.pt-br/</link>
-      <pubDate>Tue, 05 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>http://www.example.com/posts/emoji-support.pt-br/</guid>
-      <description>&lt;p&gt;Emojis podem ser ativados em um projeto Hugo de diversar formas.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
       <title>External Page: Hugo Coder Wiki</title>
-      <link>http://www.example.com/posts/hugo-coder-wiki/</link>
-      <pubDate>Mon, 04 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>http://www.example.com/posts/hugo-coder-wiki/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Página Externa: Wiki Hugo Coder</title>
       <link>http://www.example.com/posts/hugo-coder-wiki/</link>
       <pubDate>Mon, 04 Mar 2019 00:00:00 +0000</pubDate>
       
@@ -208,19 +181,8 @@ summary(cars)## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 2
       <pubDate>Thu, 28 Feb 2019 00:00:00 +0000</pubDate>
       
       <guid>http://www.example.com/about/</guid>
-      <description>Written in Go, Hugo is an open source static site generator available under the Apache Licence 2.0. Hugo supports TOML, YAML and JSON data file types, Markdown and HTML content files and uses shortcodes to add rich content. Other notable features are taxonomies, multilingual mode, image processing, custom output formats, HTML/CSS/JS minification and support for Sass SCSS workflows.
-Hugo makes use of a variety of open source projects including:
-https://github.com/yuin/goldmark https://github.</description>
-    </item>
-    
-    <item>
-      <title>About</title>
-      <link>http://www.example.com/about.pt-br/</link>
-      <pubDate>Thu, 28 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>http://www.example.com/about.pt-br/</guid>
-      <description>Escrito em Go, Hugo é um gerador de sites estáticos de código aberto disponível sobre a licença Apache Licence 2.0. O Hugo suporta TOML, YAML e JSON como arquivos de dados, Markdown e HTML como arquivos de conteúdo, e usa shortcodes para adicionar conteúdos ricos. Outras funcionalidades notaveis são taxonomias, modo multilingual, processamento de imagens, formatos de saída customizaveis, minificação de HTML/CSS/JS e suporte a fluxos SASS/SCSS.
-O Hugo faz o uso de vários projetos de código aberto incluíndo:</description>
+      <description>I am an Assistant Professor in School of Accountancy in College of Business and Analytics in Southern Illinois University Carbondale. My teaching and research interests lie in the intersection between Accounting and Data Science.
+Education Link to heading DBA, Major: Computer Information Systems; Minor: Accounting, Louisiana Tech University MBA, Major: Accountancy, Eastern Illinois University MBA, Major: Accounting &amp;amp; Information Systems, University of Dhaka BBA, Major: Accounting &amp;amp; Information Systems, University of Dhaka Professional Certification Link to heading CPA, State of Illinois CMA, Bangladesh Research Interests Link to heading Data Breaches Cybersecurity Network Centrality of Executives International Accounting Audit Efficiency and Timeliness Teaching Interests Link to heading Auditing &amp;amp; Assurance Service Accounting Information Systems Data Analytics Machine Learning Hobbies Link to heading I enjoy outdoor activities a lot, specially fishing and hiking in Southern Illinois.</description>
     </item>
     
     <item>
@@ -229,7 +191,7 @@ O Hugo faz o uso de vários projetos de código aberto incluíndo:</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://www.example.com/contact/</guid>
-      <description>Follow me, @johndoe.</description>
+      <description>If you want to contact with me, please email me at mdshariful.islam@business.siu.edu</description>
     </item>
     
     <item>
@@ -238,16 +200,7 @@ O Hugo faz o uso de vários projetos de código aberto incluíndo:</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://www.example.com/projects/</guid>
-      <description>Nothing to see here&amp;hellip; Move along!</description>
-    </item>
-    
-    <item>
-      <title>Projetos</title>
-      <link>http://www.example.com/projects/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://www.example.com/projects/</guid>
-      <description>Nada para ver aqui.. Circulando!</description>
+      <description>CEO Network Centrality &amp;amp; Audit Timeliness Link to heading The study examines the association between CEO’s network connections and audit timeliness. Based on extant research, we hypothesize that well-connected CEOs are associated with reduced audit lag. Using a sample of over 2000 firms for the period 2004 to 2017, we find that, ceteris paribus, firms with well-connected CEOs are associated with reduced audit lag. We also find firms led by more connected CEOs have better financial reporting quality and pay higher auditing fees for increased audit efforts.</description>
     </item>
     
   </channel>
