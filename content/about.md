@@ -20,7 +20,7 @@ I am an Assistant Professor in School of Accountancy in College of Business and 
 
 # Professional Certification
 
-* CPA, State of Illinois 
+* CPA, State of Illinois (USA) 
 * CMA, Bangladesh 
 
 # Research Interests 
@@ -42,4 +42,4 @@ I am an Assistant Professor in School of Accountancy in College of Business and 
 
 # Hobbies 
 
-I enjoy outdoor activities a lot, specially fishing and hiking in Southern Illinois. I like the outdoors of Sothern Illinois.
+I enjoy outdoor activities a lot, specially fishing and hiking in Southern Illinois. I like the outdoors of Southern Illinois.
